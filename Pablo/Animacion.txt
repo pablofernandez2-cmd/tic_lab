@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Avión ASCII Animado</title>
+    <style>
+        pre {
+            font-family: monospace;
+            font-size: 24px;
+            line-height: 1;
+        }
+    </style>
+</head>
+<body>
+    <pre id="avion"></pre>
+
+    <script>
+        const avion = [
+            "     ___     ",
+            "  _/   \\_   ",
+            " |  o o  |   ",
+            "  \\  -  /    ",
+            "   ‾‾‾‾‾     ",
+            "    / \\      ",
+            "   /   \\     "
+        ];
+
+        const elemento = document.getElementById("avion");
+        let posicion = -30;
+
+        function animar() {
+            // Limpiar y mover el avión
+            let output = "";
+            for (let linea of avion) {
+                output += " ".repeat(Math.max(0, posicion)) + linea + "\n";
+            }
+            elemento.textContent = output;
+
+            // Actualizar posición
+            posicion++;
+            if (posicion > 100) posicion = -30;
+
+            requestAnimationFrame(animar);
+        }
+
+        animar();
+    </script>
+</body>
+</html>
